@@ -1,5 +1,2 @@
-body{max-width: 50%; margin: 0 auto; background-color: rgb(35, 215, 215);}
+body{max-width: 50%; margin: 0 auto; background-color: rgb(168, 169, 169);}
 header{font-size: 3em; margin: 0 auto;}
-#assignments{font-size: 1.5em; margin: 0 auto;}
-a{text-decoration: none; color: rgb(5, 47, 99);}
-a :hover{text-decoration: underline; color: rgb(14, 89, 181);}
