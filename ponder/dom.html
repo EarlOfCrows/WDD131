@@ -82,6 +82,7 @@
         
         document.querySelector("ul").style.listStyleType = "square";
 
+        let selector = document.querySelector("#webdevlist");
         let element = document.querySelector("select");
         let current = element.value;
         console.log(current);
@@ -92,7 +93,12 @@
         })
         function changeTheme() {
     let current = selectElem.value;
-    if (current === 'HTML') {}
+    if (current === 'HTML') {
+        console.log("HTML selected");
+        secondList.style.color = "blue";
+    } else if (current === 'CSS') {
+        console.log("CSS selected");
+    }
         }
     </script>
 </body>
