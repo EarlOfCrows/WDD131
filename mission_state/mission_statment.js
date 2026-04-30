@@ -19,5 +19,6 @@ function changeMode() {
         document.body.style.backgroundColor = "white";
         document.body.style.color = "black";
         console.log("light mode selected");
+        image.src = "images/byui-logo-blue.webp";
     }
 }
