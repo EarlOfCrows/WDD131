@@ -70,8 +70,9 @@
         let content = document.getElementById("content");
         content.style.backgroundColor = "Yellow";
         content.style.color = "Purple";
-        let secondList = document.querySelectorAll(".list2")[1];
-        //secondList.style.color = "green";
+        let secondList = document.querySelectorAll(".list2")[0];
+        let thridList = document.querySelectorAll(".list3")[0];
+        
         document.querySelector("img").setAttribute("src", "me.png");
         document.querySelector("img").setAttribute("alt", "Image not found");
        
@@ -82,24 +83,28 @@
         
         document.querySelector("ul").style.listStyleType = "square";
 
-        let selector = document.querySelector("#webdevlist");
         let element = document.querySelector("select");
         let current = element.value;
         console.log(current);
         let selectElem = document.getElementById('webdevlist');
-        selectElem.addEventListener('change', function(){
         let codeValue = selectElem.value;
         console.log(codeValue);
-        })
-        function changeTheme() {
+    
+    selectElem.addEventListener('change', changeTheme);
+
+    function changeTheme() {
     let current = selectElem.value;
-    if (current === 'HTML') {
+    if (current === 'html') {
         console.log("HTML selected");
-        secondList.style.color = "blue";
-    } else if (current === 'CSS') {
+        firstList.style.color = "pink";
+    } else if (current === 'css') {
         console.log("CSS selected");
+        secondList.style.color = "green";
+    } else if (current === 'js') {
+        console.log("JavaScript selected");
+        thridList.style.color = "orange";
     }
-        }
+}
     </script>
 </body>
 </html>
