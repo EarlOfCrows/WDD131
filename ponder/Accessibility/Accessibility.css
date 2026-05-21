@@ -52,7 +52,20 @@ header, footer {
 }
 
 @media (min-width: 600px) {
-    
+    .movie{
+        display: grid; 
+        grid-template-columns: 1fr 1fr;
+    }
+    .movie img{
+        grid-column: 1/2;
+        grid-row: 1/6;
+    }
+
+    .main-nav{
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+    }
 
 }
           
