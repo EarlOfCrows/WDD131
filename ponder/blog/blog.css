@@ -122,6 +122,12 @@ main {
     font-size: 1.125rem;
 }
 
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 200px;
+}
+
 
 @media (min-width: 768px) {
     .site-header {
