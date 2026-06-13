@@ -11,6 +11,7 @@ const card_stats = {
 const attackedButton = document.querySelector(".attacked")
 const levelUpButton = document.querySelector(".level-up")
 
+//.attacked() equivilent 
 attackedButton.addEventListener("click", () => {
     card_stats.health -= 20;
     updateCardStats();
@@ -19,6 +20,7 @@ attackedButton.addEventListener("click", () => {
     }
 });
 
+//.levelUp() equivilent
 levelUpButton.addEventListener("click", () => {
     card_stats.level ++
     updateCardStats();
