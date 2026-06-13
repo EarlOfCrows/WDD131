@@ -16,7 +16,6 @@ attackedButton.addEventListener("click", () => {
     updateCardStats();
     if (card_stats.health <= 0) {
         alert("Character Died");
-        customAlert.classList.remove('hidden')
     }
 });
 
