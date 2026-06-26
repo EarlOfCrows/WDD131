@@ -51,7 +51,7 @@ body {
     outline: none;
 }
 
-.search-button {
+#search-button {
     background: none;
     border: none;
     border-left: 2px solid #333;
@@ -61,7 +61,7 @@ body {
     align-items: center;
 }
 
-.search-button img {
+#search-button img {
     width: 16px;
     height: 16px;
 }
