@@ -45,7 +45,7 @@ const hikes = [
     name: "Coffee Pot Rapids",
     stub: "coffee_pot",
     imgSrc: "https://wdd131.netlify.app/examples/hikes/images/coffee-pot.jpg",
-    imgAlt: "Image of Bechler Falls",
+    imgAlt: "Image of Bechler Falls", 
     distance: "2.2 miles",
     tags: ["Rafting"],
     difficulty: 1,
