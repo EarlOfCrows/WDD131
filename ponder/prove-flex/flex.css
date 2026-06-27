@@ -41,10 +41,12 @@ body {
     border: 2px solid #333;
     border-radius: 4px;
     overflow: hidden;
+    width: 100%; 
 }
 
-.search-input {
-    flex-grow: 1;
+#search-input {
+    flex: 1 1 auto; 
+    width: 100%;   
     border: none;
     padding: 8px 12px;
     font-size: 0.9rem;
@@ -52,6 +54,7 @@ body {
 }
 
 #search-button {
+    flex: 0 0 auto; 
     background: none;
     border: none;
     border-left: 2px solid #333;
@@ -151,16 +154,16 @@ footer {
     }
 
     .logo-img {
-    width: 120px;
-    height: auto;
+        width: 120px;
+        height: auto;
     }
 
     .logo-text {
-    font-family: 'Courier New', Courier, monospace; 
-    font-weight: bold;
-    margin: 0;
-    font-size: 3rem;
-    letter-spacing: 1px;
+        font-family: 'Courier New', Courier, monospace; 
+        font-weight: bold;
+        margin: 0;
+        font-size: 3rem;
+        letter-spacing: 1px;
     }
 
     .recipe-card {
@@ -188,8 +191,9 @@ footer {
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
-        .attribution {
-            order: -1;
-        }
+    }
+
+    footer .attribution {
+        order: -1;
     }
 }

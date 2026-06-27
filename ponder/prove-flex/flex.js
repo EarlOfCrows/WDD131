@@ -1,7 +1,7 @@
 const searchButton = document.getElementById('search-button');
 
 searchButton.addEventListener('click', () => {
-    const searchInput = document.querySelector('.search-input').value.toLowerCase();
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
     console.log("User Input: " + searchInput);
 
     if (searchInput === '') {
