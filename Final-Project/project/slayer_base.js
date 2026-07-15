@@ -8,8 +8,15 @@ const raritySelect = document.getElementById('rarity_search');
 const characterSelect = document.getElementById('character_search');
 const includeDescriptionSelect = document.getElementById('include_description');    
 const card_typeSelect = document.getElementById('card_type');
+const upgradedSelect = document.getElementById('Upgraded');
 
 const orderBySelect = document.getElementById('Order');
+
+function chnageSelectors(){
+    if (cardRelicSelect.value === 'Relic') {
+        card_typeSelect.toggleAttribute('hidden', true);
+    }
+}
 
 
 function makeFetchUrl(selectedOption, selectedRarity, selectedCharacter, selectedCardType) {
@@ -56,7 +63,7 @@ async function fetchCards() {
         throw new Error(`HTTP error! status: ${res.status}`);
     }
     const spireData = await res.json();
-    currentData = spireData; // Store the fetched cards
+    currentData = spireData; 
     }
     catch (error) {
         console.error('Error fetching relics:', error);
@@ -77,15 +84,16 @@ function filterData(cards, searchValue, includeDescription) {
 
 searchButton.addEventListener('click', async function() {
     await fetchCards();
+    chnageSelectors();
     const searchValue = searchInput.value.toLowerCase();
     const includeDescription = includeDescriptionSelect.checked;
     console.log('Search:', includeDescription, searchValue, cardRelicSelect.value, raritySelect.value, characterSelect.value, card_typeSelect.value);
-    console.log('Current Data:', currentData); // Log the current data
+    console.log('Current Data:', currentData);
     
     filteredCards = filterData(currentData, searchValue, includeDescription);
     filteredCards = orderCards(filteredCards);
     displayCards(filteredCards);
-    console.log('Filtered Data:', filteredCards); // Placeholder for actual cards
+    console.log('Filtered Data:', filteredCards);
 });
 
 // Have a fetch function that gets the general cards, fiters through stuff like card/relic, rarity, character, and card type. Then have a separate function that filters through the cards based on the search input and the include description checkbox. Then have a function that displays the cards in the card container.
@@ -99,8 +107,14 @@ function displayCards(cards) {
         if (resultsContainer.childElementCount >= resultsLimit) {
             return; 
         }
+        let cardDiv = ``;
 
-        const cardDiv = `<img src="${card.image_url_card}" alt="${card.name}">`;
+        if (cardRelicSelect.value === 'Card' && upgradedSelect.checked) {
+            cardDiv = `<img src="${card.image_url_card_upg}" alt="${card.name}">`; 
+        }
+        else{
+            cardDiv = `<img src="${card.image_url_card}" alt="${card.name}">`;
+        }
         resultsContainer.innerHTML += cardDiv;
         
     });
