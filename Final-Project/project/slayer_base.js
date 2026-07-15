@@ -1,5 +1,5 @@
-let currentData = []; // Store the fetched data globally
-let filteredCards = []; // Store the filtered cards globally
+let currentData = [];
+let filteredCards = []; 
 
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
@@ -8,6 +8,8 @@ const raritySelect = document.getElementById('rarity_search');
 const characterSelect = document.getElementById('character_search');
 const includeDescriptionSelect = document.getElementById('include_description');    
 const card_typeSelect = document.getElementById('card_type');
+
+const orderBySelect = document.getElementById('Order');
 
 
 function makeFetchUrl(selectedOption, selectedRarity, selectedCharacter, selectedCardType) {
@@ -81,6 +83,7 @@ searchButton.addEventListener('click', async function() {
     console.log('Current Data:', currentData); // Log the current data
     
     filteredCards = filterData(currentData, searchValue, includeDescription);
+    filteredCards = orderCards(filteredCards);
     displayCards(filteredCards);
     console.log('Filtered Data:', filteredCards); // Placeholder for actual cards
 });
@@ -88,17 +91,35 @@ searchButton.addEventListener('click', async function() {
 // Have a fetch function that gets the general cards, fiters through stuff like card/relic, rarity, character, and card type. Then have a separate function that filters through the cards based on the search input and the include description checkbox. Then have a function that displays the cards in the card container.
 
 function displayCards(cards) {
-    const resultsLimit = 100; // Limit the number of displayed cards
+    const resultsLimit = 1000;
     const resultsContainer = document.getElementById('resultsContainer');
     resultsContainer.innerHTML = ''; 
-    resultsContainer.style.display = 'grid'; // Ensure the container is displayed as a grid
+    resultsContainer.style.display = 'grid'; 
     cards.forEach(card => {
         if (resultsContainer.childElementCount >= resultsLimit) {
-            return; // Stop adding more cards if the limit is reached
+            return; 
         }
 
         const cardDiv = `<img src="${card.image_url_card}" alt="${card.name}">`;
         resultsContainer.innerHTML += cardDiv;
         
     });
+}
+
+function orderCards(cards, orderBy = orderBySelect.value) {
+    switch (orderBy) {
+        case 'NAME':
+            return cards.sort((a, b) => a.name.localeCompare(b.name));
+        case 'RARITY':
+            return cards.sort((a, b) => {
+                let rarityOrder = ['Basic', 'Common', 'Uncommon', 'Rare', 'Ancient', 'Event', 'Shop', 'Starter'];
+                if (rarityOrder.indexOf(a.rarity) === -1) rarityOrder.push(a.rarity);
+                if (rarityOrder.indexOf(b.rarity) === -1) rarityOrder.push(b.rarity);
+                return rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity);
+            });
+        case 'CHARACTER':
+            return cards.sort((a, b) => a.color.localeCompare((b.color)));
+        default:
+            return cards;
+    }
 }
