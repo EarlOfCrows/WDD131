@@ -97,7 +97,6 @@ searchButton.addEventListener('click', async function() {
 });
 
 // Have a fetch function that gets the general cards, fiters through stuff like card/relic, rarity, character, and card type. Then have a separate function that filters through the cards based on the search input and the include description checkbox. Then have a function that displays the cards in the card container.
-
 function displayCards(cards) {
     const resultsLimit = 1000;
     const resultsContainer = document.getElementById('resultsContainer');
