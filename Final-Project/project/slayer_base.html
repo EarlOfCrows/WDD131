@@ -22,26 +22,20 @@
             <label for="searchInput">Search:</label>
             <input type="text" id="searchInput" name="searchInput" placeholder="Search Here...">
         </div>
-
+        
+        <span id="toggles" aria-label="toggles">
         <!-- Description On/Off -->
         <div id="description-toggle">
             <input type="checkbox" id="include_description" name="include_description">
             <label for="include_description" style="margin-bottom: 0;">Include Description</label>
         </div>
 
-        <div id="description-toggle">
+        <!-- Upgraded On/Off -->
+        <div id="upgraded-toggle">
             <input type="checkbox" id="Upgraded" name="Upgraded">
             <label for="Upgraded" style="margin-bottom: 0;">Include Upgraded</label>
         </div>
-
-        <!-- Card/Relic -->
-        <div>
-            <label for="card/relic">Choose a Card/Relic:</label>
-            <select id="card/relic" name="card/relic">
-                <option value="Card">Card</option>
-                <option value="Relic">Relic</option>
-            </select>
-        </div>
+        </span>
 
         <!-- Card Type -->
         <div>
@@ -64,10 +58,8 @@
                 <option value="Uncommon">Uncommon</option>
                 <option value="Rare">Rare</option>
                 <option value="Ancient">Ancient</option> 
-                <option value="Basic">Basic</option>  <!-- For cards -->
-                <option value="Event">Event</option> <!-- For Both -->
-                <option value="Shop">Shop</option> <!-- For Relics -->
-                <option value="Starter">Starter</option> <!-- For Relics -->
+                <option value="Basic">Basic</option>
+                <option value="Event">Event</option>
             </select>
         </div>
 
@@ -80,7 +72,7 @@
                 <option value="Silent">The Silent</option>
                 <option value="Regent">The Regent</option>
                 <option value="Defect">The Defect</option>
-                <option value="Colorless">Colorless Only</option> <!-- For cards -->
+                <option value="Colorless">Colorless Only</option>
             </select>
         </div>
     </section>

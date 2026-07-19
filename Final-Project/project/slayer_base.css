@@ -86,11 +86,12 @@ main {
     color: #e0e0e0;
 }
 
-.description-toggle {
+#toggles {
     display: flex;
     flex-direction: row; 
     align-items: center; 
     padding-top: 25px;
+    justify-content: space-evenly;
 }
 
 input[type="text"], 

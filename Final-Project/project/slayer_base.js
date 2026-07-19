@@ -3,7 +3,6 @@ let filteredCards = [];
 
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
-const cardRelicSelect = document.getElementById('card/relic');
 const raritySelect = document.getElementById('rarity_search');
 const characterSelect = document.getElementById('character_search');
 const includeDescriptionSelect = document.getElementById('include_description');    
@@ -12,43 +11,24 @@ const upgradedSelect = document.getElementById('Upgraded');
 
 const orderBySelect = document.getElementById('Order');
 
-function chnageSelectors(){
-    if (cardRelicSelect.value === 'Relic') {
-        card_typeSelect.toggleAttribute('hidden', true);
-    }
-}
 
-
-function makeFetchUrl(selectedOption, selectedRarity, selectedCharacter, selectedCardType) {
+function makeFetchUrl(selectedRarity, selectedCharacter, selectedCardType) {
     let firstParamAdded = false;
     let fetchUrl = "https://spire-codex.com/api/";
-    if (selectedOption === 'Relic') {
-        fetchUrl += "relics";
-    } else {
-        fetchUrl += "cards";
-    }
+
+    fetchUrl += "cards";
+
     if (selectedRarity !== 'All') {
-        if (selectedOption === 'Relic') {
-            fetchUrl += `?rarity=${selectedRarity} Relic`; 
-        }
-        else{
         fetchUrl += `?rarity=${selectedRarity}`;
-        }
         firstParamAdded = true;
     }
     if (selectedCharacter !== 'All') {
-        if (selectedOption === 'Relic') {
-        fetchUrl += `${firstParamAdded ? '&' : '?'}pool=${selectedCharacter.toLowerCase()}`;
-        }
-        else{
         fetchUrl += `${firstParamAdded ? '&' : '?'}color=${selectedCharacter.toLowerCase()}`;
-        }
         firstParamAdded = true;
     }
     if (selectedCardType !== 'All') {
-        if (selectedOption === 'Card') {
         fetchUrl += `${firstParamAdded ? '&' : '?'}type=${selectedCardType}`;
-        firstParamAdded = true;}
+        firstParamAdded = true;
     }
     console.log('Fetch URL:', fetchUrl);
     return fetchUrl;
@@ -56,7 +36,7 @@ function makeFetchUrl(selectedOption, selectedRarity, selectedCharacter, selecte
 
 
 async function fetchCards() {
-    let fetchUrl = makeFetchUrl(cardRelicSelect.value, raritySelect.value, characterSelect.value, card_typeSelect.value);
+    let fetchUrl = makeFetchUrl(raritySelect.value, characterSelect.value, card_typeSelect.value);
     try{
     const res = await fetch(fetchUrl);
     if (!res.ok) {
@@ -84,10 +64,9 @@ function filterData(cards, searchValue, includeDescription) {
 
 searchButton.addEventListener('click', async function() {
     await fetchCards();
-    chnageSelectors();
     const searchValue = searchInput.value.toLowerCase();
     const includeDescription = includeDescriptionSelect.checked;
-    console.log('Search:', includeDescription, searchValue, cardRelicSelect.value, raritySelect.value, characterSelect.value, card_typeSelect.value);
+    console.log('Search:', includeDescription, searchValue, raritySelect.value, characterSelect.value, card_typeSelect.value);
     console.log('Current Data:', currentData);
     
     filteredCards = filterData(currentData, searchValue, includeDescription);
@@ -108,7 +87,7 @@ function displayCards(cards) {
         }
         let cardDiv = ``;
 
-        if (cardRelicSelect.value === 'Card' && upgradedSelect.checked) {
+        if (upgradedSelect.checked) {
             cardDiv = `<img src="${card.image_url_card_upg}" alt="${card.name}">`; 
         }
         else{
